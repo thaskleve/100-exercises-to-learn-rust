@@ -1,8 +1,9 @@
-// TODO: `easy_ticket` should panic when the title is invalid.
-//   When the description is invalid, instead, it should use a default description:
-//   "Description not provided".
 fn easy_ticket(title: String, description: String, status: Status) -> Ticket {
-    todo!()
+    let mut description = description;
+    if description.is_empty() || description.len() > 500 {
+        description = "Description not provided".into();
+    }
+    Ticket::new(title, description, status).unwrap()
 }
 
 #[derive(Debug, PartialEq, Clone)]
