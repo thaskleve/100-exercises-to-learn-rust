@@ -11,11 +11,17 @@
 // We expect `fibonacci(0)` to return `0`, `fibonacci(1)` to return `1`,
 // `fibonacci(2)` to return `1`, and so on.
 pub fn fibonacci(n: u32) -> u32 {
-    // TODO: implement the `fibonacci` function
-    //
-    // Hint: use a `Vec` to memoize the results you have already calculated
-    // so that you don't have to recalculate them several times.
-    todo!()
+    if n == 0 {
+        return 0
+    }
+
+    let n = n as usize;
+    let mut acc = vec![0; n + 1];
+    acc[1] = 1;
+    for i in 2..=n {
+        acc[i] = acc[i - 1] + acc[i - 2];
+    }
+    acc[n]
 }
 
 #[cfg(test)]
